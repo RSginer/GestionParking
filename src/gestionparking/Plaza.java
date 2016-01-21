@@ -1,22 +1,22 @@
 package gestionparking;
 public class Plaza {
     
-    private String veh_plaza;
+    Vehiculo v;
     private int num_plaza;
     private int num_sotano;
-    private char tipo_veh;
+    private String tipo_plaza;
 
     public Plaza(int num_plaza, int num_sotano) {
         this.num_plaza = num_plaza;
         this.num_sotano = num_sotano;
     }
 
-    public String getVeh_plaza() {
-        return veh_plaza;
+    public Vehiculo getVeh_plaza() {
+        return v;
     }
 
-    public void setVeh_plaza(String veh_plaza) {
-        this.veh_plaza = veh_plaza;
+    public void setVeh_plaza(Vehiculo v) {
+        this.v = v;
     }
 
     public int getNum_plaza() {
@@ -35,12 +35,12 @@ public class Plaza {
         this.num_sotano = num_sotano;
     }
 
-    public char getTipo_veh() {
-        return tipo_veh;
+    public String getTipo_plaza() {
+        return tipo_plaza;
     }
 
-    public void setTipo_veh(char tipo_veh) {
-        this.tipo_veh = tipo_veh;
+    public void setTipo_veh(String tipo_plaza) {
+        this.tipo_plaza = tipo_plaza;
     }
     
 }
