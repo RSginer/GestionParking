@@ -49,12 +49,12 @@ public abstract class Vehiculo {
         return numero_movil;
     }
 
-    public String setNumero_movil(long numero_movil) {
+    public boolean setNumero_movil(long numero_movil) {
         String movil = ("" + numero_movil);
-        String guardado = "No se ha guardado el numero de telefono, porque no tiene 9 digitos";
+        boolean guardado=false;
         if (movil.length() == 9) {
             this.numero_movil = numero_movil;
-            guardado = movil;
+            guardado = true;
         } 
         return guardado;
     }
