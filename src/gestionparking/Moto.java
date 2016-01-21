@@ -2,9 +2,13 @@ package gestionparking;
 public class Moto extends Vehiculo{
     
     private int num_ruedas;
-
+    private String test="Soy una moto loco";
     public Moto(String matricula, String nif_dueño) {
         super(matricula, nif_dueño);
+    }
+
+    public String getTest() {
+        return test;
     }
 
     public int getNum_ruedas() {
