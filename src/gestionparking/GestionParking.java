@@ -19,6 +19,8 @@ public class GestionParking {
         String prueba=" ";
         Vehiculo comprobar;
         Vehiculo v1 = new Moto("V2835GB","23847658Q");
+        v1.setModelo("Honda CBR");
+        v1.setColor("Naranja");
         Plaza p1 = new Plaza(4,2);
         p1.setVeh_plaza(v1);
        comprobar = p1.getVeh_plaza();
@@ -30,7 +32,7 @@ public class GestionParking {
         prueba = m1.getTest();
         }
         System.out.println(prueba);
-        
+        System.out.println(p1);
     }
     
 }
