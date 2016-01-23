@@ -3,12 +3,6 @@ package gestionparking;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author ruben
@@ -17,7 +11,7 @@ public class Parking {
    Vehiculo cocheJefe = new Coche("L","J9821VLC","23847658Q");
    public String nombreDeParking;
    public String direccion;
-   private Map <String,Plaza> listaPlazas = new HashMap<>();
+   private final Map <String,Plaza> listaPlazas = new HashMap<>();
 
     public Parking(String nombreDeParking, String direccion) {
         this.nombreDeParking = nombreDeParking;
