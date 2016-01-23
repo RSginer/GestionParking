@@ -42,6 +42,21 @@ public class Plaza {
     public void setTipo_veh(String tipo_plaza) {
         this.tipo_plaza = tipo_plaza;
     }
+    
+    public int precio(Vehiculo v){
+        int precio=0;
+    if(v instanceof Moto){
+    precio = 25;
+    }else if(v instanceof Coche){
+        Coche c = (Coche) v;
+        if(c.getTipo().equalsIgnoreCase("C")){
+        precio=40;
+        }else{
+        precio=55;
+        }
+    }
+    return precio;}
+    
     @Override
     public String toString(){
     String texto=("Nº Plaza: " + num_plaza + " Sótano" + num_sotano);
