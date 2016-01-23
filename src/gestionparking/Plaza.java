@@ -42,6 +42,14 @@ public class Plaza {
     public void setTipo_veh(String tipo_plaza) {
         this.tipo_plaza = tipo_plaza;
     }
-    
+    @Override
+    public String toString(){
+    String texto=("Nº Plaza: " + num_plaza + " Sótano" + num_sotano);
+    if(v==null){
+        texto=texto.concat("\n No hay ningun vehiculo ocupando esta plaza");
+    }else{
+        texto=texto.concat("\n Vehiculo: " + v.getMatricula() + " " + v.getModelo() + " " + v.getColor());
+    }
+    return texto;}
 }
 
