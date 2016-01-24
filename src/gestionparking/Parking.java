@@ -75,15 +75,21 @@ public class Parking {
         if (estado.equalsIgnoreCase("libres")) {
             ocupadas = false;
         }
-
         for (Plaza valor : listaPlazas.values()) {
             if (ocupadas == valor.ocupada && valor.getTipo_plaza().equalsIgnoreCase(tipoVehiculo)) {
                 lista.add(valor);
             }
-
         }
         return lista;
     }
+
+    public int ganancias() {
+        List<Plaza> listaPlazas = this.listarPlazas("ocupadas", "M");
+        int ganancias=0;
+        for (int i = 0; i < listaPlazas.size(); i++) {
+            ganancias +=listaPlazas.get(i).precio(listaPlazas.get(i).getVeh_plaza());
+        }
+    return ganancias;}
 
     public int darBaja(String sNN) {
         int respuesta = 1;

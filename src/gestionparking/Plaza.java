@@ -63,6 +63,9 @@ public class Plaza {
                 precio = 55;
             }
         }
+        if(this.num_sotano==2){
+        precio-=5;
+        }
         return precio;
     }
 
