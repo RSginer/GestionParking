@@ -68,7 +68,7 @@ public class Plaza {
 
     @Override
     public String toString() {
-        String texto = ("Nº Plaza: " + num_plaza + " Sótano" + num_sotano);
+        String texto = ("Nº Plaza: " + num_plaza + " Sótano " + num_sotano);
         if (v == null) {
             texto = texto.concat("\n No hay ningun vehiculo ocupando esta plaza");
         } else {
