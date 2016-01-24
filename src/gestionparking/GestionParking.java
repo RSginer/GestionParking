@@ -25,6 +25,9 @@ public class GestionParking {
         for (int i = 0; i < listaDePlazas.size(); i++) {
             System.out.println(listaDePlazas.get(i)); 
         }
+        Moto m1 = new Moto("32we","qwfqf");
+        parking.alquilar(m1);
+        System.out.println("" + parking.ganancias());
     }
     
 }

@@ -58,10 +58,12 @@ public class Parking {
         String respuesta = null;
         for (Plaza valor : listaPlazas.values()) {
             if (v instanceof Moto && valor.getTipo_plaza().equalsIgnoreCase("M") && valor.ocupada == false) {
+                valor.setVeh_plaza(v);
                 respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
             } else if (v instanceof Coche) {
                 Coche c = (Coche) v;
                 if (c.getTipo().equalsIgnoreCase(valor.getTipo_plaza()) && valor.ocupada == false) {
+                    valor.setVeh_plaza(v);
                     respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
                 }
             }
@@ -84,16 +86,22 @@ public class Parking {
     }
 
     public int ganancias() {
-        List<Plaza> listaPlazas = this.listarPlazas("ocupadas", "M");
+        List<Plaza> listaLargos = this.listarPlazas("ocupadas", "L");
+        List<Plaza> listaCortos = this.listarPlazas("ocupadas", "C");
+        List<Plaza> listaMotos = this.listarPlazas("ocupadas", "M");
+        List<Plaza> lista = new ArrayList<>();
+         lista.addAll(listaCortos);
+         lista.addAll(listaLargos);
+         lista.addAll(listaMotos);
         int ganancias=0;
-        for (int i = 0; i < listaPlazas.size(); i++) {
-            ganancias +=listaPlazas.get(i).precio(listaPlazas.get(i).getVeh_plaza());
+        for (int i = 0; i < lista.size(); i++) {
+            ganancias +=lista.get(i).precio(lista.get(i).getVeh_plaza());
         }
     return ganancias;}
 
     public int darBaja(String sNN) {
         int respuesta = 1;
-        Plaza p = listaPlazas.get(sNN);
+        Plaza p = this.listaPlazas.get(sNN);
         if (p.ocupada) {
             p.sacarVehiculo();
             respuesta = 0;
@@ -105,8 +113,8 @@ public class Parking {
 
     public Plaza getPlaza(String sNN) {
         Plaza p = null;
-        if (listaPlazas.get(sNN) != null) {
-            p = listaPlazas.get(sNN);
+        if (this.listaPlazas.get(sNN) != null) {
+            p = this.listaPlazas.get(sNN);
         }
         return p;
     }
