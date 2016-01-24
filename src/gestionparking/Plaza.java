@@ -6,19 +6,26 @@ public class Plaza {
     private int num_plaza;
     private int num_sotano;
     private String tipo_plaza;
+    public boolean ocupada;
 
     public Plaza(int num_sotano,int num_plaza, String tipo_plaza) {
         this.num_plaza = num_plaza;
         this.num_sotano = num_sotano;
         this.tipo_plaza = tipo_plaza;
     }
-
+    
+    public void sacarVehiculo(){
+        this.v=null;
+        this.ocupada=false;
+    }
+    
     public Vehiculo getVeh_plaza() {
         return v;
     }
 
     public void setVeh_plaza(Vehiculo v) {
         this.v = v;
+        this.ocupada=true;
     }
 
     public int getNum_plaza() {
