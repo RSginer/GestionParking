@@ -13,7 +13,6 @@ public class Plaza {
         this.num_sotano = num_sotano;
         this.tipo_plaza = tipo_plaza;
     }
-    
     public void sacarVehiculo(){
         this.v=null;
         this.ocupada=false;

@@ -1,6 +1,8 @@
 package gestionparking;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,7 +56,7 @@ public class Parking {
 
     public String alquilar(Vehiculo v) {
         String respuesta = null;
-        for (Plaza valor : listaPlazas.values()) {
+        for (Plaza valor : listaPlazas.values() && respuesta==null) {
             if (v instanceof Moto && valor.getTipo_plaza().equalsIgnoreCase("M") && valor.ocupada == false) {
                 respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
             } else if (v instanceof Coche) {
@@ -66,6 +68,22 @@ public class Parking {
         }
         return respuesta;
     }
+    
+    public List<Plaza> listarPlazas(String estado, char tipoVehiculo){
+    List<Plaza> lista = new ArrayList<>();
+    String tipo = (String) tipoVehiculo;
+    boolean ocupadas=true;
+    if(estado.equalsIgnoreCase("libres")){
+    ocupadas=false;
+    }
+   
+    for(Plaza valor : listaPlazas.values()){
+        if(ocupadas==valor.ocupada && valor.getTipo_plaza().equalsIgnoreCase(tipoVehiculo)){
+            lista.
+        }
+    
+    }
+    return lista;}
 
     public int darBaja(String sNN) {
         int respuesta = 1;
