@@ -52,7 +52,7 @@ public class Plaza {
                 precio = 25;
             } else if (v instanceof Coche) {
                 Coche c = (Coche) v;
-                String tipoPuente = ("" + c.getTipo());
+                String tipoPuente = ("" + c.getTipo());                
                 if (tipoPuente.equalsIgnoreCase("C")) {
                     precio = 40;
                 } else {

@@ -2,6 +2,7 @@ package gestionparking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -56,20 +57,26 @@ public class Parking {
 
     public String alquilar(Vehiculo v) {
         String respuesta = null;
-        for (Plaza valor : listaPlazas.values()) {
+        Plaza p;
+        boolean alquilada=false;
+        Iterator<String> it = this.listaPlazas.keySet().iterator();
+       while(it.hasNext() && alquilada==false){
+           Plaza valor = this.listaPlazas.get(it.next());
             String tipoPuente = ("" + valor.getTipo_plaza());
             if (v instanceof Moto && tipoPuente.equalsIgnoreCase("M") && valor.getVeh_plaza()==null) {
                 valor.setVeh_plaza(v);
+                alquilada=true;
                 respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
             } else if (v instanceof Coche) {
                 Coche c = (Coche) v;
                 String tipoPuente2 = ("" + c.getTipo());
                 if (tipoPuente2.equalsIgnoreCase(tipoPuente) && valor.getVeh_plaza()==null) {
                     valor.setVeh_plaza(v);
+                    alquilada=true;
                     respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
                 }
             }
-        }
+       }
         return respuesta;
     }
 
