@@ -21,9 +21,6 @@ public class GestionParking {
         // TODO code application logic here
         List<Plaza> listaDePlazas = new ArrayList<>();
         List<Plaza> listaMotos;
-        List<Plaza> listaCochesC;
-        List<Plaza> listaCochesL;
-  
         Parking parking = new Parking("Calle parot", "Parking Mislata");
               Moto m1 = new Moto("moto", "qwfqf");
         parking.alquilar(m1);
