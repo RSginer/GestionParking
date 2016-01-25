@@ -83,10 +83,10 @@ public class Parking {
     public List<Plaza> listarPlazas(String estado, char tipoVehiculo) {
         List<Plaza> lista = new ArrayList<>();
         for (Plaza p : listaPlazas.values()) {
-            if (estado.equalsIgnoreCase("libres") && p.getVeh_plaza() == null) {
+            if (estado.equalsIgnoreCase("libres") && p.getVeh_plaza() == null && tipoVehiculo==p.getTipo_plaza()) {
                 lista.add(p);
             }
-            if (estado.equalsIgnoreCase("ocupadas") && p.getVeh_plaza() != null) {
+            if (estado.equalsIgnoreCase("ocupadas") && p.getVeh_plaza() != null && tipoVehiculo==p.getTipo_plaza()) {
                 lista.add(p);
             }
         }
