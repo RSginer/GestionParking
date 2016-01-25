@@ -1,7 +1,6 @@
 package gestionparking;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,13 +22,13 @@ public class GestionParking {
         String sNN;
         do {
             String plaza = "Ninguna"; 
-            int prueba;
-            int menu = 0;
+            int darBaja;
+            int menu;
             System.out.println("MENU PRINCIPAL \n");
             System.out.println("1. Alquilar plaza");
             System.out.println("2. Dar de baja");
             System.out.println("3. Ganancias");
-            System.out.println("4. Cerrar oficina \n");
+            System.out.println("4. Cerrar oficina y listar plazas libres \n");
             System.out.print("Elije una opcion: ");
             menu = sc.nextInt();
             switch (menu) {
@@ -41,7 +40,6 @@ public class GestionParking {
                     System.out.println("Introduce el tipo de vehiculo (Moto: M / Coche corto: C / Coche Largo: L )");
                     tipo = ln.nextLine();
                     if (tipo.equalsIgnoreCase("M")) {
-                        tipoVehiculo = 'M';
                         v = new Moto(matricula, niffDueño);
                         plaza = parking.alquilar(v);
                     } else if (tipo.equalsIgnoreCase("C")) {
@@ -64,8 +62,8 @@ public class GestionParking {
                 case 2: {
                     System.out.println("Introduzca su sNN:");
                     sNN = ln.nextLine();
-                    prueba = parking.darBaja(sNN);
-                switch (prueba) {
+                    darBaja = parking.darBaja(sNN);
+                switch (darBaja) {
                     case 0:
                         System.out.println("Se ha borrado correctamente.");
                         break;
