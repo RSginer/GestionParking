@@ -17,9 +17,8 @@ public class Parking {
     public String direccion;
     private final Map<String, Plaza> listaPlazas = new HashMap<>();
 
-    public Parking(String nombreDeParking, String direccion) {
+    public Parking(String nombreDeParking) {
         this.nombreDeParking = nombreDeParking;
-        this.direccion = direccion;
         Plaza p1 = new Plaza(1, 1, 'C');
         Plaza p2 = new Plaza(1, 2, 'L');
         // p2.setVeh_plaza(cocheJefe);
