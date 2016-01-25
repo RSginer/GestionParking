@@ -1,26 +1,22 @@
 package gestionparking;
 public class Coche extends Vehiculo {
-    private String test = "Soy un coche loco";
-    private String tipo;
+    private char tipo;
 
-    public String getTest() {
-        return test;
-    }
-
-    public Coche(String tipo, String matricula, String nif_dueño) {
+    public Coche(char tipo, String matricula, String nif_dueño) {
         super(matricula, nif_dueño);
         this.tipo = tipo;
     }
 
-    public String getTipo() {
+    public char getTipo() {
         return tipo;
     }
 
-    public String setTipo(String tipo) {
-        String resultado = "L";
-        if (tipo.equalsIgnoreCase("C")) {
+    public char setTipo(char tipo) {
+        char resultado = 'L';
+        String tipoPuente = ("" + tipo);
+        if (tipoPuente.equalsIgnoreCase("C")) {
             this.tipo = tipo;
-            resultado = "C";
+            resultado = 'C';
         }
         return resultado;
     }

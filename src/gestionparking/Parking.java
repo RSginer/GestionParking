@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class Parking {
 
-    Vehiculo cocheJefe = new Coche("L", "J9821VLC", "23847658Q");
+    Vehiculo cocheJefe = new Coche('L', "J9821VLC", "23847658Q");
     public String nombreDeParking;
     public String direccion;
     private final Map<String, Plaza> listaPlazas = new HashMap<>();
@@ -19,15 +19,15 @@ public class Parking {
     public Parking(String nombreDeParking, String direccion) {
         this.nombreDeParking = nombreDeParking;
         this.direccion = direccion;
-        Plaza p1 = new Plaza(1, 1, "C");
-        Plaza p2 = new Plaza(1, 2, "L");
+        Plaza p1 = new Plaza(1, 1, 'C');
+        Plaza p2 = new Plaza(1, 2, 'L');
         p2.setVeh_plaza(cocheJefe);
-        Plaza p3 = new Plaza(1, 3, "C");
-        Plaza p4 = new Plaza(1, 4, "L");
-        Plaza p5 = new Plaza(2, 1, "M");
-        Plaza p6 = new Plaza(2, 2, "L");
-        Plaza p7 = new Plaza(2, 3, "M");
-        Plaza p8 = new Plaza(2, 4, "M");
+        Plaza p3 = new Plaza(1, 3, 'C');
+        Plaza p4 = new Plaza(1, 4, 'L');
+        Plaza p5 = new Plaza(2, 1, 'M');
+        Plaza p6 = new Plaza(2, 2, 'L');
+        Plaza p7 = new Plaza(2, 3, 'M');
+        Plaza p8 = new Plaza(2, 4, 'M');
         listaPlazas.put("" + p1.getNum_sotano() + "" + p1.getNum_plaza(), p1);
         listaPlazas.put("" + p2.getNum_sotano() + "" + p2.getNum_plaza(), p2);
         listaPlazas.put("" + p3.getNum_sotano() + "" + p3.getNum_plaza(), p3);
@@ -57,12 +57,14 @@ public class Parking {
     public String alquilar(Vehiculo v) {
         String respuesta = null;
         for (Plaza valor : listaPlazas.values()) {
-            if (v instanceof Moto && valor.getTipo_plaza().equalsIgnoreCase("M") && valor.ocupada == false) {
+            String tipoPuente = ("" + valor.getTipo_plaza());
+            if (v instanceof Moto && tipoPuente.equalsIgnoreCase("M") && valor.getVeh_plaza()==null) {
                 valor.setVeh_plaza(v);
                 respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
             } else if (v instanceof Coche) {
                 Coche c = (Coche) v;
-                if (c.getTipo().equalsIgnoreCase(valor.getTipo_plaza()) && valor.ocupada == false) {
+                String tipoPuente2 = ("" + c.getTipo());
+                if (tipoPuente2.equalsIgnoreCase(tipoPuente) && valor.getVeh_plaza()==null) {
                     valor.setVeh_plaza(v);
                     respuesta = ("" + valor.getNum_sotano() + "" + valor.getNum_plaza());
                 }
@@ -71,41 +73,48 @@ public class Parking {
         return respuesta;
     }
 
-    public List<Plaza> listarPlazas(String estado, String tipoVehiculo) {
+    public List<Plaza> listarPlazas(String estado, char tipoVehiculo) {
         List<Plaza> lista = new ArrayList<>();
-        boolean ocupadas = true;
         if (estado.equalsIgnoreCase("libres")) {
-            ocupadas = false;
-        }
-        for (Plaza valor : listaPlazas.values()) {
-            if (ocupadas == valor.ocupada && valor.getTipo_plaza().equalsIgnoreCase(tipoVehiculo)) {
-                lista.add(valor);
+            for (Plaza valor : listaPlazas.values()) {
+                if (valor.getVeh_plaza() == null && valor.getTipo_plaza() == (tipoVehiculo)) {
+                    lista.add(valor);
+                }
+            }
+        } else {
+            for (Plaza valor : listaPlazas.values()) {
+                if (valor.getVeh_plaza() != null && valor.getTipo_plaza() == (tipoVehiculo)) {
+                    lista.add(valor);
+                }
             }
         }
+
         return lista;
     }
 
     public int ganancias() {
-        List<Plaza> listaLargos = this.listarPlazas("ocupadas", "L");
-        List<Plaza> listaCortos = this.listarPlazas("ocupadas", "C");
-        List<Plaza> listaMotos = this.listarPlazas("ocupadas", "M");
+        List<Plaza> listaLargos = this.listarPlazas("ocupadas", 'L');
+        List<Plaza> listaCortos = this.listarPlazas("ocupadas", 'C');
+        List<Plaza> listaMotos = this.listarPlazas("ocupadas", 'M');
         List<Plaza> lista = new ArrayList<>();
-         lista.addAll(listaCortos);
-         lista.addAll(listaLargos);
-         lista.addAll(listaMotos);
-        int ganancias=0;
+        lista.addAll(listaCortos);
+        lista.addAll(listaLargos);
+        lista.addAll(listaMotos);
+        int ganancias = 0;
         for (int i = 0; i < lista.size(); i++) {
-            ganancias +=lista.get(i).precio(lista.get(i).getVeh_plaza());
+            ganancias += lista.get(i).precio();
         }
-    return ganancias;}
+        return ganancias;
+    }
 
     public int darBaja(String sNN) {
         int respuesta = 1;
         Plaza p = this.listaPlazas.get(sNN);
-        if (p.ocupada) {
-            p.sacarVehiculo();
+        if (p != null) {
+            //  p.sacarVehiculo();
+            p.setVeh_plaza(null);
             respuesta = 0;
-        } else if (p.ocupada == false) {
+        } else if (p == null) {
             respuesta = 2;
         }
         return respuesta;

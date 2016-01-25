@@ -21,7 +21,7 @@ public class GestionParking {
         // TODO code application logic here
         List<Plaza> listaDePlazas;
         Parking parking = new Parking("Calle parot","Parking Mislata");
-        listaDePlazas = parking.listarPlazas("libres", "M");
+        listaDePlazas = parking.listarPlazas("libres", 'M');
         for (int i = 0; i < listaDePlazas.size(); i++) {
             System.out.println(listaDePlazas.get(i)); 
         }

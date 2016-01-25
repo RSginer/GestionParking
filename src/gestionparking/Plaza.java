@@ -5,17 +5,12 @@ public class Plaza {
     Vehiculo v;
     private int num_plaza;
     private int num_sotano;
-    private String tipo_plaza;
-    public boolean ocupada;
+    private char tipo_plaza;
 
-    public Plaza(int num_sotano,int num_plaza, String tipo_plaza) {
+    public Plaza(int num_sotano,int num_plaza, char tipo_plaza) {
         this.num_plaza = num_plaza;
         this.num_sotano = num_sotano;
         this.tipo_plaza = tipo_plaza;
-    }
-    public void sacarVehiculo(){
-        this.v=null;
-        this.ocupada=false;
     }
     
     public Vehiculo getVeh_plaza() {
@@ -24,7 +19,6 @@ public class Plaza {
 
     public void setVeh_plaza(Vehiculo v) {
         this.v = v;
-        this.ocupada=true;
     }
 
     public int getNum_plaza() {
@@ -43,29 +37,32 @@ public class Plaza {
         this.num_sotano = num_sotano;
     }
 
-    public String getTipo_plaza() {
+    public char getTipo_plaza() {
         return tipo_plaza;
     }
 
-    public void setTipo_veh(String tipo_plaza) {
+    public void setTipo_veh(char tipo_plaza) {
         this.tipo_plaza = tipo_plaza;
     }
 
-    public int precio(Vehiculo v) {
+    public int precio() {
         int precio = 0;
-        if (v instanceof Moto) {
-            precio = 25;
-        } else if (v instanceof Coche) {
-            Coche c = (Coche) v;
-            if (c.getTipo().equalsIgnoreCase("C")) {
-                precio = 40;
-            } else {
-                precio = 55;
+        if (this.v!=null) {
+            if (v instanceof Moto) {
+                precio = 25;
+            } else if (v instanceof Coche) {
+                Coche c = (Coche) v;
+                String tipoPuente = ("" + c.getTipo());
+                if (tipoPuente.equalsIgnoreCase("C")) {
+                    precio = 40;
+                } else {
+                    precio = 55;
+                }
             }
-        }
-        if(this.num_sotano==2){
-        precio-=5;
-        }
+            if (this.num_sotano == 2) {
+                precio -= 5;
+            }
+       }
         return precio;
     }
 
