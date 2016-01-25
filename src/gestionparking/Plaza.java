@@ -68,7 +68,13 @@ public class Plaza {
 
     @Override
     public String toString() {
-        String texto = ("Nº Plaza: " + num_plaza + " Sótano: " + num_sotano);
+        String sotano="";
+        if(num_sotano==1){
+        sotano="Primero";
+        }else if(num_sotano==2){
+        sotano="Segundo";
+        }
+        String texto = ("Nº Plaza: " + num_plaza + " Sótano: " + sotano);
         if (v == null) {
             texto = texto.concat("\n");
         } else {
