@@ -25,13 +25,11 @@ public class GestionParking {
         List<Plaza> listaCochesL;
   
         Parking parking = new Parking("Calle parot", "Parking Mislata");
-              Moto m1 = new Moto("La moto del RuBO", "qwfqf");
+              Moto m1 = new Moto("moto", "qwfqf");
         parking.alquilar(m1);
         m1.color="Azul";
         m1.modelo="Rieju RS2 Matrix";
         listaMotos = parking.listarPlazas("ocupadas", 'M');
-        listaCochesC = parking.listarPlazas("ocupadas", 'C');
-        listaCochesL = parking.listarPlazas("ocupadas", 'L');
         listaDePlazas.addAll(listaMotos);
         for (int i = 0; i < listaDePlazas.size(); i++) {
             System.out.println(listaDePlazas.get(i));
