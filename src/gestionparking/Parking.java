@@ -21,7 +21,7 @@ public class Parking {
         this.nombreDeParking = nombreDeParking;
         Plaza p1 = new Plaza(1, 1, 'C');
         Plaza p2 = new Plaza(1, 2, 'L');
-        // p2.setVeh_plaza(cocheJefe);
+        p2.setVeh_plaza(cocheJefe);
         Plaza p3 = new Plaza(1, 3, 'C');
         Plaza p4 = new Plaza(1, 4, 'L');
         Plaza p5 = new Plaza(2, 1, 'M');

@@ -87,20 +87,21 @@ public class GestionParking {
                 case 4: {
                     System.out.println("\n");
                     List<Plaza> listaMotos = parking.listarPlazas("libres",'M');
-                    System.out.println("Listado de plazas libres de Moto a fecha " + hoy);
+                    System.out.println("Listado de plazas libres de Moto a fecha " + hoy + "\n");
                     for (int i = 0; i < listaMotos.size(); i++) {
                         System.out.println(listaMotos.get(i));
                         contador++;
                     }
                     System.out.println("\n");
                      List<Plaza> listaCochesCortos = parking.listarPlazas("libres",'C');                     
-                    System.out.println("Listado de plazas libres de Coches cortos a fecha " + hoy);
+                    System.out.println("Listado de plazas libres de Coches cortos a fecha " + hoy + "\n");
                     for (int i = 0; i < listaCochesCortos.size(); i++) {
                         System.out.println(listaCochesCortos.get(i));
                         contador++;
-                    }                    
+                    }              
+                     System.out.println("\n");
                      List<Plaza> listaCochesLargos = parking.listarPlazas("libres",'L');                     
-                    System.out.println("Listado de plazas libres de Coches largos a fecha " + hoy);
+                    System.out.println("Listado de plazas libres de Coches largos a fecha " + hoy + "\n");
                     for (int i = 0; i < listaCochesLargos.size(); i++) {
                         System.out.println(listaCochesLargos.get(i));
                         contador++;
