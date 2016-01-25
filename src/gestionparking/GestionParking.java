@@ -19,15 +19,18 @@ public class GestionParking {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        List<Plaza> listaDePlazas;
-        Parking parking = new Parking("Calle parot","Parking Mislata");
-        listaDePlazas = parking.listarPlazas("libres", 'M');
-        for (int i = 0; i < listaDePlazas.size(); i++) {
-            System.out.println(listaDePlazas.get(i)); 
-        }
-        Moto m1 = new Moto("32we","qwfqf");
-        parking.alquilar(m1);
-        System.out.println("" + parking.ganancias());
+        List<Plaza> listaDePlazas = new ArrayList<>();
+        List<Plaza> listaMotos;
+        List<Plaza> listaCochesC;
+        List<Plaza> listaCochesL;
+  
+        Parking parking = new Parking("Calle parot", "Parking Mislata");
+              Moto m1 = new Moto("32we", "qwfqf");
+        
+  
+       
+     
+        
+        System.out.println(parking.alquilar(m1) + " " + parking.ganancias());
     }
-    
 }

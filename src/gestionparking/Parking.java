@@ -21,7 +21,7 @@ public class Parking {
         this.direccion = direccion;
         Plaza p1 = new Plaza(1, 1, 'C');
         Plaza p2 = new Plaza(1, 2, 'L');
-        p2.setVeh_plaza(cocheJefe);
+       // p2.setVeh_plaza(cocheJefe);
         Plaza p3 = new Plaza(1, 3, 'C');
         Plaza p4 = new Plaza(1, 4, 'L');
         Plaza p5 = new Plaza(2, 1, 'M');
@@ -75,22 +75,15 @@ public class Parking {
 
     public List<Plaza> listarPlazas(String estado, char tipoVehiculo) {
         List<Plaza> lista = new ArrayList<>();
-        if (estado.equalsIgnoreCase("libres")) {
-            for (Plaza valor : listaPlazas.values()) {
-                if (valor.getVeh_plaza() == null && valor.getTipo_plaza() == (tipoVehiculo)) {
-                    lista.add(valor);
-                }
+        for (Plaza p : listaPlazas.values()) {
+            if(estado.equalsIgnoreCase("libres") && p.getVeh_plaza()==null){
+                lista.add(p);
             }
-        } else {
-            for (Plaza valor : listaPlazas.values()) {
-                if (valor.getVeh_plaza() != null && valor.getTipo_plaza() == (tipoVehiculo)) {
-                    lista.add(valor);
-                }
+            if(estado.equalsIgnoreCase("ocupadas") && p.getVeh_plaza()!=null){
+                lista.add(p);
             }
         }
-
-        return lista;
-    }
+        return lista;}
 
     public int ganancias() {
         List<Plaza> listaLargos = this.listarPlazas("ocupadas", 'L');
@@ -117,8 +110,7 @@ public class Parking {
         } else if (p == null) {
             respuesta = 2;
         }
-        return respuesta;
-    }
+        return respuesta;}
 
     public Plaza getPlaza(String sNN) {
         Plaza p = null;
