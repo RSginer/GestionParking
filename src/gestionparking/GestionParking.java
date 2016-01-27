@@ -1,6 +1,7 @@
 package gestionparking;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,19 +92,18 @@ public class GestionParking {
                         contador++;
                     }
                     System.out.println("\n");
-                     List<Plaza> listaCochesCortos = parking.listarPlazas("libres",'C');                     
-                    System.out.println("Listado de plazas libres de Coches cortos a fecha " + hoy + "\n");
-                    for (int i = 0; i < listaCochesCortos.size(); i++) {
-                        System.out.println(listaCochesCortos.get(i));
+                     List<Plaza> listaCochesCortos = parking.listarPlazas("libres",'C'); 
+                     List<Plaza> listaCochesLargos = parking.listarPlazas("libres",'L');
+                     List<Plaza> listaCoches = new ArrayList<>();
+                     listaCoches.addAll(listaCochesLargos);
+                     listaCoches.addAll(listaCochesCortos);
+                    System.out.println("Listado de plazas libres de Coche a fecha " + hoy + "\n");
+                    for (int i = 0; i < listaCoches.size(); i++) {
+                        System.out.println(listaCoches.get(i));
                         contador++;
                     }              
-                     System.out.println("\n");
-                     List<Plaza> listaCochesLargos = parking.listarPlazas("libres",'L');                     
-                    System.out.println("Listado de plazas libres de Coches largos a fecha " + hoy + "\n");
-                    for (int i = 0; i < listaCochesLargos.size(); i++) {
-                        System.out.println(listaCochesLargos.get(i));
-                        contador++;
-                    }
+                    System.out.println("\n");
+                                    
                     System.out.println("\n");
                     System.out.println("Total libres: " + contador);
                     salir=true;
