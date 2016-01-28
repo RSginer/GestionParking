@@ -31,7 +31,11 @@ public class GestionParking {
             System.out.println("3. Ganancias");
             System.out.println("4. Cerrar oficina y listar plazas libres \n");
             System.out.print("Elije una opcion: ");
+            try{
             menu = sc.nextInt();
+            }catch (Exception e){
+            menu = 4;
+            }
             switch (menu) {
                 case 1: {
                     System.out.println("Introduce el niff del dueño:");
