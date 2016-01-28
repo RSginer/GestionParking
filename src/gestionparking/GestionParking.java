@@ -107,7 +107,6 @@ public class GestionParking {
                         contador++;
                     }              
                     System.out.println("\n");
-                                    
                     System.out.println("\n");
                     System.out.println("Total libres: " + contador);
                     salir=true;

@@ -12,13 +12,14 @@ import java.util.Map;
  */
 public class Parking {
 
-    Vehiculo cocheJefe = new Coche('L', "J9821VLC", "23847658Q");
+    
     public String nombreDeParking;
     public String direccion;
     private final Map<String, Plaza> listaPlazas = new HashMap<>();
 
     public Parking(String nombreDeParking) {
         this.nombreDeParking = nombreDeParking;
+        Vehiculo cocheJefe = new Coche('L', "J9821VLC", "23847658Q");
         Plaza p1 = new Plaza(1, 1, 'C');
         Plaza p2 = new Plaza(1, 2, 'L');
         p2.setVeh_plaza(cocheJefe);
@@ -103,14 +104,16 @@ public class Parking {
           return ganancias;}
 
     public int darBaja(String sNN) {
-        int respuesta = 1;
+        int respuesta = 2;
         Plaza p = this.listaPlazas.get(sNN);
         if (p != null) {
             //  p.sacarVehiculo();
+            if(p.getVeh_plaza()!=null){
             p.setVeh_plaza(null);
             respuesta = 0;
+            }
         } else if (p == null) {
-            respuesta = 2;
+            respuesta = 1;
         }
         return respuesta;
     }
