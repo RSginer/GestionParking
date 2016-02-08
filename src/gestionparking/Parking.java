@@ -19,7 +19,7 @@ public class Parking {
 
     public Parking(String nombreDeParking) {
         this.nombreDeParking = nombreDeParking;
-        Vehiculo cocheJefe = new Coche('L', "J9821VLC", "23847658Q");
+        Vehiculo cocheJefe = new Coche('L', "9821VLC", "23847658Q");
         Plaza p1 = new Plaza(1, 1, 'C');
         Plaza p2 = new Plaza(1, 2, 'L');
         p2.setVeh_plaza(cocheJefe);

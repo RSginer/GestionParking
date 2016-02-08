@@ -10,31 +10,32 @@ public class GestionParking {
     public static void main(String[] args) {
         // TODO code application logic here
         boolean salir = false;
-        int contador=0;
+        int contador = 0;
         LocalDate hoy = LocalDate.now();
         Parking parking = new Parking("Rasul-Rubén : Super Cars and another Vehicles, etc.");
         Scanner sc = new Scanner(System.in);
         Scanner ln = new Scanner(System.in);
-        Vehiculo v;
+        Vehiculo v = new Moto("1234AAA", "1234AAA");
         String niffDueño;
         String matricula;
         String tipo;
         char tipoVehiculo;
         String sNN;
         do {
-            String plaza = "Ninguna"; 
+            String plaza = "Ninguna";
             int darBaja;
             int menu;
+            System.out.println(v.matricula);
             System.out.println("MENU PRINCIPAL \n");
             System.out.println("1. Alquilar plaza");
             System.out.println("2. Dar de baja");
             System.out.println("3. Ganancias");
             System.out.println("4. Cerrar oficina y listar plazas libres \n");
             System.out.print("Elije una opcion: ");
-            try{
-            menu = sc.nextInt();
-            }catch (Exception e){
-            menu = 4;
+            try {
+                menu = sc.nextInt();
+            } catch (Exception e) {
+                menu = 4;
             }
             switch (menu) {
                 case 1: {
@@ -45,15 +46,30 @@ public class GestionParking {
                     System.out.println("Introduce el tipo de vehiculo (Moto: M / Coche corto: C / Coche Largo: L )");
                     tipo = ln.nextLine();
                     if (tipo.equalsIgnoreCase("M")) {
-                        v = new Moto(matricula, niffDueño);
+                        try {
+                            v = new Moto(matricula, niffDueño);
+                        } catch (ExceptionMatricula e) {
+                            System.out.println(e.getMessage());
+                            salir=true;
+                        }
                         plaza = parking.alquilar(v);
                     } else if (tipo.equalsIgnoreCase("C")) {
                         tipoVehiculo = 'C';
-                        v = new Coche(tipoVehiculo, matricula, niffDueño);
+                        try {
+                            v = new Coche(tipoVehiculo, matricula, niffDueño);
+                        } catch (ExceptionMatricula e) {
+                            System.out.println(e.getMessage());
+                            salir=true;
+                        }
                         plaza = parking.alquilar(v);
                     } else if (tipo.equalsIgnoreCase("L")) {
                         tipoVehiculo = 'L';
-                        v = new Coche(tipoVehiculo, matricula, niffDueño);
+                        try {
+                            v = new Coche(tipoVehiculo, matricula, niffDueño);
+                        } catch (ExceptionMatricula e) {
+                            System.out.println(e.getMessage());
+                            salir=true;
+                        }
                         plaza = parking.alquilar(v);
                     }
                     if (plaza == null) {
@@ -68,19 +84,19 @@ public class GestionParking {
                     System.out.println("Introduzca su sNN:");
                     sNN = ln.nextLine();
                     darBaja = parking.darBaja(sNN);
-                switch (darBaja) {
-                    case 0:
-                        System.out.println("Se ha borrado correctamente.");
-                        break;
-                    case 1:
-                        System.out.println("La plaza introducida no existe.");
-                        break;
-                    case 2:
-                        System.out.println("La plaza introducida esta vacia.");
-                        break;
-                    default:
-                        break;
-                }
+                    switch (darBaja) {
+                        case 0:
+                            System.out.println("Se ha borrado correctamente.");
+                            break;
+                        case 1:
+                            System.out.println("La plaza introducida no existe.");
+                            break;
+                        case 2:
+                            System.out.println("La plaza introducida esta vacia.");
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 }
                 case 3: {
@@ -89,31 +105,31 @@ public class GestionParking {
                 }
                 case 4: {
                     System.out.println("\n");
-                    List<Plaza> listaMotos = parking.listarPlazas("libres",'M');
+                    List<Plaza> listaMotos = parking.listarPlazas("libres", 'M');
                     System.out.println("Listado de plazas libres de Moto a fecha " + hoy + "\n");
                     for (int i = 0; i < listaMotos.size(); i++) {
                         System.out.println(listaMotos.get(i));
                         contador++;
                     }
                     System.out.println("\n");
-                     List<Plaza> listaCochesCortos = parking.listarPlazas("libres",'C'); 
-                     List<Plaza> listaCochesLargos = parking.listarPlazas("libres",'L');
-                     List<Plaza> listaCoches = new ArrayList<>();
-                     listaCoches.addAll(listaCochesLargos);
-                     listaCoches.addAll(listaCochesCortos);
+                    List<Plaza> listaCochesCortos = parking.listarPlazas("libres", 'C');
+                    List<Plaza> listaCochesLargos = parking.listarPlazas("libres", 'L');
+                    List<Plaza> listaCoches = new ArrayList<>();
+                    listaCoches.addAll(listaCochesLargos);
+                    listaCoches.addAll(listaCochesCortos);
                     System.out.println("Listado de plazas libres de Coche a fecha " + hoy + "\n");
                     for (int i = 0; i < listaCoches.size(); i++) {
                         System.out.println(listaCoches.get(i));
                         contador++;
-                    }              
+                    }
                     System.out.println("\n");
                     System.out.println("\n");
                     System.out.println("Total libres: " + contador);
-                    salir=true;
+                    salir = true;
                     break;
                 }
-                default:{
-                    salir=true;
+                default: {
+                    salir = true;
                 }
             }
         } while (salir == false);

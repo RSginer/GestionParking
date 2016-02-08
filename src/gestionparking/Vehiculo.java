@@ -1,5 +1,7 @@
 package gestionparking;
 
+import java.util.Formatter;
+
 public abstract class Vehiculo {
 
     protected String matricula;
@@ -9,6 +11,10 @@ public abstract class Vehiculo {
     protected long numero_movil;
 
     public Vehiculo(String matricula, String nif_dueño) {
+        if(matricula.length()!=7){
+              throw new ExceptionMatricula() ;
+        }
+      
         this.matricula = matricula;
         this.nif_dueño = nif_dueño;
     }
